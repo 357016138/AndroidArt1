@@ -1,8 +1,10 @@
-package com.song.androidart1;
+package com.song.androidart1.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+
+import com.song.androidart1.R;
 
 public class FirstActivity extends AppCompatActivity {
 

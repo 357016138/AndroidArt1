@@ -1,19 +1,19 @@
-package com.song.androidart1;
+package com.song.androidart1.activity;
 
-import android.app.Instrumentation;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+
+import com.song.androidart1.R;
+
+import java.util.Arrays;
 
 /**
  * 一个查看activity生命周期的例子，可以查看正常情况和异常情况(屏幕旋转或被杀死等)的周期
- *
- * */
+ */
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
             Log.d(TAG, "[onCreate]restore extra_test:" + test);
         }
 
-//        TextView
 
         findViewById(R.id.button1).setOnClickListener(new View.OnClickListener() {
 
@@ -41,12 +40,52 @@ public class MainActivity extends AppCompatActivity {
 //                intent.putExtra("time", System.currentTimeMillis());
 //                intent.addCategory("com.ryg.category.c");
 //                intent.setDataAndType(Uri.parse("file://abc"), "text/plain");
+
+                Bundle b1 = new Bundle();
+
                 startActivity(intent);
             }
         });
 
+        int[] nums = {2,100,1000,10,80,60,70,54,87,89};
+
+        arrayPairSum(nums);
+    }
+
+
+    public int arrayPairSum(int[] nums) {
+        // 2  1
+        int temp;
+        int sum = 0;
+        for(int i=0;i<nums.length;i++){
+
+            for(int j=0;j<nums.length-1;j++){
+
+                if(nums[j] > nums[i]){
+                    temp = nums[i];
+                    nums[i] =nums[j];
+                    nums[j] = temp;
+                }
+            }
+
+            Log.e("Main", Arrays.toString(nums));
+
+        }
+
+
+
+        Arrays.sort(nums);
+
+
+        for(int k=0;k<nums.length;k=k+2){
+
+            sum += nums[k];
+        }
+
+        return sum;
 
     }
+
 
     @Override
     protected void onStart() {
